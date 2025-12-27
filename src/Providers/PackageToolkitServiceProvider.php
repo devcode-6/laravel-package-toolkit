@@ -7,7 +7,14 @@ use Illuminate\Support\ServiceProvider;
 Class PackageToolkitServiceProvider extends ServiceProvider {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/package-toolkit.php', 'package-toolkit');
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/package-toolkit.php',
+            'package-toolkit'
+        );
+
+        $this->app->singleton('package-toolkit', function () {
+            return new ToolkitManager();
+        });
     }
 
     public function boot(): void
