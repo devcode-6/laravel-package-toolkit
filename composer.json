@@ -13,6 +13,12 @@
         }
     },
 
+    "autoload-dev": {
+        "psr-4": {
+            "Devcode6\\PackageToolkit\\Tests\\": "tests/"
+        }
+    },
+
     "extra": {
         "laravel": {
             "providers": [

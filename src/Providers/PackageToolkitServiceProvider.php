@@ -1,8 +1,9 @@
 <?php
 
-namespace Devcode6\PackageToolKit\Providers;
+namespace Devcode6\PackageToolkit\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Devcode6\PackageToolkit\Services\ToolkitManager;
 
 Class PackageToolkitServiceProvider extends ServiceProvider {
     public function register(): void
