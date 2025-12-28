@@ -19,13 +19,18 @@ Class PackageToolkitServiceProvider extends ServiceProvider {
 
     public function boot(): void
     {
-        // config publish
+        // Publish config
         $this->publishes([
             __DIR__ . '/../../config/package-toolkit.php' =>
                 config_path('package-toolkit.php'),
         ], 'package-toolkit-config');
 
-        // routes
-        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+        // Conditional routes
+        if (config('package-toolkit.enabled') &&
+            config('package-toolkit.routes.enabled')) {
+
+            $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+        }
     }
+
 }

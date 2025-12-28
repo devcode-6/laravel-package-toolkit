@@ -2,6 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/package-toolkit/health', function () {
-    return 'Package Toolkit is alive';
+Route::group([
+    'prefix' => config('package-toolkit.routes.prefix'),
+    'middleware' => config('package-toolkit.routes.middleware'),
+], function () {
+
+    Route::get('/health', function () {
+        return response()->json([
+            'status' => app('package-toolkit')->status(),
+        ]);
+    });
+
 });
